@@ -20,11 +20,11 @@ public class AppController {
                 .map(file -> new FileDTO(file.getOriginalFilename(), file.getContentType(), file))
                 .collect(Collectors.toList());
         System.out.println("Got a run");
-        return new ResponseDTO("Received files", fileDTOs, 200);
+        return new ResponseDTO<>("Received files", fileDTOs, 200);
     }
 
     @GetMapping
     public ResponseDTO<String> get() {
-        return new ResponseDTO("Hello World", "Hello World", 200);
+        return new ResponseDTO<>("Hello World", "Hello World", 200);
     }
 }
