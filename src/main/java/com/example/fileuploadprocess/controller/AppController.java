@@ -2,6 +2,7 @@ package com.example.fileuploadprocess.controller;
 
 import com.example.fileuploadprocess.dto.FileDTO;
 import com.example.fileuploadprocess.dto.ResponseDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/file")
+@Slf4j
 public class AppController {
 
     @PostMapping
@@ -19,7 +21,9 @@ public class AppController {
         List<FileDTO> fileDTOs = files.stream()
                 .map(file -> new FileDTO(file.getOriginalFilename(), file.getContentType(), file))
                 .collect(Collectors.toList());
-        System.out.println("Got a run");
+//        System.out.println("Got a run");
+        log.info("Received files: {}", fileDTOs);
+
         return new ResponseDTO<>("Received files", fileDTOs, 200);
     }
 
