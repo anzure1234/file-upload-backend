@@ -19,6 +19,7 @@ public class AppController {
         List<FileDTO> fileDTOs = files.stream()
                 .map(file -> new FileDTO(file.getOriginalFilename(), file.getContentType(), file))
                 .collect(Collectors.toList());
+        System.out.println("Got a run");
         return new ResponseDTO("Received files", fileDTOs, 200);
     }
 
