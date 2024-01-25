@@ -22,7 +22,7 @@ public class AppController {
                 .map(file -> new FileDTO(file.getOriginalFilename(), file.getContentType(), file))
                 .collect(Collectors.toList());
 //        System.out.println("Got a run");
-        log.info("Received files: {}", fileDTOs);
+        log.error("Received files: {}", fileDTOs);
 
         return new ResponseDTO<>("Received files", fileDTOs, 200);
     }
